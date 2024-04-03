@@ -47,19 +47,10 @@ newClient.amounts = [];
 
 
 
-// while (confirm('Добавить покупку для клиента'  + newClient.firstName + '?')) {
-// newClient.amounts.push(+prompt("Введите сумму или нажмите Отмена для завершения"));
-// }
-while (true) {
-    if (!confirm(`Добавить покупку для клиента ${newClient.firstName}?`)) {
-        break;
-    }
-    let amount = prompt("Введите сумму или нажмите Отмена для завершения");
-    if (amount === null || amount === '') {
-        break;
-    }
-    newClient.amounts.push(+amount);
+while (confirm('Добавить покупку для клиента'  + newClient.firstName + '?')) {
+newClient.amounts.push(+prompt("Введите сумму или нажмите Отмена для завершения"));
 }
+
 
 clients.push(newClient);
 
@@ -147,11 +138,8 @@ function whoSpentMore(clientsArray) {
     let maxSpentClient = null;
     let maxSpentAmount = 0;
 
-    for (const client of clientsArray) {
-        let totalAmount = 0;
-        for (const amount of client.amounts) {
-            totalAmount += amount;
-        }
+   for (const client of clientsArray) {
+        const totalAmount = getAllAmount(client.amounts);
 
         if (totalAmount > maxSpentAmount) {
             maxSpentAmount = totalAmount;
